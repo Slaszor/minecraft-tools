@@ -1,0 +1,30 @@
+[Unit]
+Description=Minecraft Server
+After=network.target
+# StartLimitIntervalSec=0
+
+
+[Service]
+User=ubuntu
+Type=simple
+# The configuration file application.properties should be here:
+
+#change this to your workspace
+WorkingDirectory=/home/ubuntu
+
+#path to executable.
+#executable is a bash script which calls jar file
+ExecStart=/home/ubuntu/start-service.sh
+
+#list of exit status definitions that, when returned by the main service process, will be considered successful termination
+# SuccessExitStatus=143
+
+TimeoutStartSec=60
+TimeoutStopSec=30
+
+Restart=on-failure
+RestartSec=10
+
+
+[Install]
+WantedBy=multi-user.target
